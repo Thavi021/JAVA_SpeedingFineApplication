@@ -1,0 +1,92 @@
+
+package testquestion2;
+import java.util.Scanner;
+/**
+ *
+@author Thaveshan Naidoo 
+ * Contact: 0655018007
+ * Instagram :@Thavi021
+ * GitHub:@Thavi021
+ */
+//Driver class
+public class ClassName {
+
+    
+    public static void main(String[] args) {
+        
+        Fine A = new speedingFines();
+        
+        A.PrintFine();
+    }
+    
+}
+//IFINE Interface
+interface iFine
+    {
+       public void PrintFine();
+       
+    }
+//Abstract class with implementations 
+abstract class Fine implements iFine
+{
+   //Declarations
+    String name;
+    double speed;
+    double FINE;
+    double rate = 10.20;
+
+    
+}
+
+
+//subclass
+class speedingFines extends Fine
+{
+//set and get speed
+    public void setSpeed() {
+        
+        Scanner spd = new Scanner(System.in);
+        System.out.println("Enter the persons speed : ");
+        speed = spd.nextDouble();
+        }
+    public double getSpeed()
+    {
+        return speed;
+    }
+//set and get NAME
+    public void setCitizenName() {
+        Scanner nme = new Scanner(System.in);
+        System.out.println("Enter the person name : ");
+        name = nme.nextLine();
+        }
+    public String getCitizenName()
+    {
+        return name;
+    }
+    
+ //Calculating the fine
+    public void calcFine()
+    {
+        if (speed >= 120)
+        {
+            FINE = speed*rate;
+            
+        }
+    }
+    
+    //Printing the fine
+    public void PrintFine()
+    {
+       
+        setCitizenName();
+        setSpeed();
+        calcFine();
+       
+        
+        System.out.println("***********************************************************************");
+        System.out.println("PERSON :" + getCitizenName());
+        System.out.println("SPEED  :" + getSpeed() + "km");
+        System.out.println("FINE PAYABLE: R" + FINE);
+        System.out.println("***********************************************************************");
+    }
+}
